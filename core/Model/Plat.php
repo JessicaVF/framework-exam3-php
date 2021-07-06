@@ -19,6 +19,12 @@ class Plat extends Model{
         return $plats;
 
     }
+    public function insert(string $namePlat, string $descriptionPlat, int $pricePlat, int $restaurantId){
+        
+        $queryAdd = $this->pdo->prepare("INSERT INTO $this->table (name, price, description, restaurant_id) VALUES (:name, :price, :description, :restaurant_id)");
+        $queryAdd->execute(['name' =>$namePlat, 'price'=>$pricePlat, 'description' =>$descriptionPlat, 'restaurant_id' => $restaurantId]);   
+        // $newPlat = $queryAdd->fetch(PDO::FETCH_CLASS, $className);
+    }
     
 
 }
